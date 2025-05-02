@@ -10,7 +10,7 @@
 
         <!-- Ім’я, Відключення автоматичної генерації стовпців, шрифт, фон, контур, розмір шрифту, -->
         <DataGrid Name="dgSimple" AutoGenerateColumns="false" FontFamily="Broadway" Background="#a653ec"
- 			BorderBrush="#6d14b8" FontSize="16">
+ 			BorderBrush="#6d14b8" FontSize="16" RowDetailsVisibilityMode="Visible">
             <!-- Визначення користувацьких стовпців -->
             <DataGrid.Columns>
                 <!-- Стовпець, прив’язаний до властивості Name у класі User -->
