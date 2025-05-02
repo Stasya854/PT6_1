@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="SimpleDataGridSample" Height="180" Width="400">
     <Grid Margin="10">
-        <DataGrid Name="dgSimple" FontFamily="Broadway" Background="#a653ec" BorderBrush="#6d14b8" FontSize="16"></DataGrid>
+        <!-- Таблиця DataGrid для відображення списку користувачів -->
+        <!-- Ім’я, Відключення автоматичної генерації стовпців, шрифт, фон, контур, розмір шрифту, -->
+        <DataGrid Name="dgSimple" AutoGenerateColumns="false" FontFamily="Broadway" Background="#a653ec"
+ 			BorderBrush="#6d14b8" FontSize="16">
+            <!-- Визначення користувацьких стовпців -->
+            <DataGrid.Columns>
+                <!-- Прив'язка до властивості Name у класі User -->
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <!-- Стовпець з шаблоном, що містить елемент DatePicker для дати народження -->
+                <DataGridTemplateColumn Header="Birthday">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!-- Вбудований вибір дати, прив'язаний до властивості Birthday -->
+                            <!-- Прив'язка вибраної дати, відсутність рамок -->
+                            <DatePicker SelectedDate="{Binding Birthday}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
