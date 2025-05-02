@@ -44,7 +44,7 @@ namespace PT6_1
                 var parts = line.Split(',');
 
                 // Перевірка, що рядок містить саме 3 частини (Id, Name, Birthday)
-                if (parts.Length == 3)
+                if (parts.Length == 4)
                 {
                     try
                     {
@@ -52,7 +52,8 @@ namespace PT6_1
                         {
                             Id = int.Parse(parts[0]),
                             Name = parts[1],
-                            Birthday = DateTime.Parse(parts[2])
+                            Birthday = DateTime.Parse(parts[2]),
+                            ImageUrl = parts[3]
                         };
                         users.Add(user); // Додавання користувача до списку
                     }
@@ -73,11 +74,22 @@ namespace PT6_1
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
-        public string Details
+        public string ImageUrl { get; set; }
+
+        // Обробка зображення для прив'язки
+        public BitmapImage ImageSource
         {
             get
             {
-                return String.Format("{0} was born on {1} and this is a long description of the person.", this.Name, this.Birthday.ToString("D", CultureInfo.CreateSpecificCulture("en-US")));
+                try
+                {
+                    var uri = new Uri(ImageUrl, UriKind.Absolute);
+                    return new BitmapImage(uri);
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
     }
