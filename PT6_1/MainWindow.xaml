@@ -7,25 +7,25 @@
         mc:Ignorable="d"
         Title="SimpleDataGridSample" Height="180" Width="400">
     <Grid Margin="10">
-        <!-- Таблиця DataGrid для відображення списку користувачів -->
+
         <!-- Ім’я, Відключення автоматичної генерації стовпців, шрифт, фон, контур, розмір шрифту, -->
         <DataGrid Name="dgSimple" AutoGenerateColumns="false" FontFamily="Broadway" Background="#a653ec"
  			BorderBrush="#6d14b8" FontSize="16">
             <!-- Визначення користувацьких стовпців -->
             <DataGrid.Columns>
-                <!-- Прив'язка до властивості Name у класі User -->
+                <!-- Стовпець, прив’язаний до властивості Name у класі User -->
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <!-- Стовпець з шаблоном, що містить елемент DatePicker для дати народження -->
-                <DataGridTemplateColumn Header="Birthday">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <!-- Вбудований вибір дати, прив'язаний до властивості Birthday -->
-                            <!-- Прив'язка вибраної дати, відсутність рамок -->
-                            <DatePicker SelectedDate="{Binding Birthday}" BorderThickness="0" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <!-- Стовпець, прив’язаний до властивості Birthday у класі User -->
+                <DataGridTextColumn Header="Birthday" Binding="{Binding Birthday}" />
             </DataGrid.Columns>
+
+            <!-- Шаблон для відображення додаткової інформації при розгортанні рядка -->
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <!-- Відображення тексту з властивості Details -->
+                    <TextBlock Text="{Binding Details}" Margin="10" />
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
     </Grid>
 </Window>

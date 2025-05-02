@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 
 namespace PT6_1
@@ -72,5 +73,12 @@ namespace PT6_1
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
+        public string Details
+        {
+            get
+            {
+                return String.Format("{0} was born on {1} and this is a long description of the person.", this.Name, this.Birthday.ToString("D", CultureInfo.CreateSpecificCulture("en-US")));
+            }
+        }
     }
 }
